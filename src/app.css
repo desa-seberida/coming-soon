@@ -1,3 +1,85 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@layer base {
+	:root {
+		--neo-bg: #e8ecf1;
+		--neo-surface: #e8ecf1;
+		--neo-shadow-dark: rgba(163, 177, 198, 0.6);
+		--neo-shadow-light: rgba(255, 255, 255, 0.8);
+		--gov-primary: #0d47a1;
+		--gov-secondary: #1565c0;
+		--gov-accent: #2196f3;
+		--gov-text: #1e293b;
+		--gov-text-light: #475569;
+	}
+
+	html,
+	body {
+		min-height: 100%;
+	}
+
+	body {
+		@apply antialiased;
+		background-color: var(--neo-bg);
+		color: var(--gov-text);
+	}
+
+	a {
+		@apply transition-all duration-300;
+	}
+}
+
+@layer components {
+	.neo-card {
+		@apply rounded-2xl;
+		background: var(--neo-surface);
+		box-shadow: 8px 8px 16px var(--neo-shadow-dark),
+			-8px -8px 16px var(--neo-shadow-light);
+	}
+
+	.neo-inset {
+		@apply rounded-xl;
+		background: var(--neo-surface);
+		box-shadow: inset 4px 4px 8px var(--neo-shadow-dark),
+			inset -4px -4px 8px var(--neo-shadow-light);
+	}
+
+	.neo-btn {
+		@apply rounded-lg px-4 py-2 font-medium transition-all duration-200;
+		background: var(--neo-surface);
+		box-shadow: 4px 4px 8px var(--neo-shadow-dark),
+			-4px -4px 8px var(--neo-shadow-light);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px; /* Minimum touch target for accessibility */
+		text-decoration: none;
+		cursor: pointer;
+		user-select: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.neo-btn:hover {
+		box-shadow: 2px 2px 4px var(--neo-shadow-dark),
+			-2px -2px 4px var(--neo-shadow-light);
+		transform: translateY(1px);
+	}
+
+	.neo-btn:active {
+		box-shadow: inset 2px 2px 4px var(--neo-shadow-dark),
+			inset -2px -2px 4px var(--neo-shadow-light);
+		transform: translateY(2px);
+	}
+
+	.gov-badge {
+		@apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider;
+		background: linear-gradient(135deg, var(--gov-primary), var(--gov-secondary));
+		color: white;
+		box-shadow: 0 2px 8px rgba(13, 71, 161, 0.3);
+	}
+
+	.gov-heading {
+		@apply font-bold tracking-tight;
+		color: var(--gov-primary);
+	}
+}
